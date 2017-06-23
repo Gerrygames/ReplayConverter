@@ -3,6 +3,7 @@ package me.gerrygames.replayconverter.main;
 import me.gerrygames.replayconverter.replay.ReplayReader;
 import me.gerrygames.replayconverter.replay.ReplayInfo;
 import me.gerrygames.replayconverter.replay.ReplayWriter;
+import me.gerrygames.replayconverter.viaversion.ViaBackwardsManager;
 import me.gerrygames.replayconverter.viaversion.ViaVersionManager;
 import us.myles.ViaVersion.api.protocol.ProtocolRegistry;
 import us.myles.ViaVersion.api.protocol.ProtocolVersion;
@@ -24,6 +25,7 @@ public class ReplayConverter {
 			File file = chooser.getSelectedFile();
 
 			ViaVersionManager.init();
+			ViaBackwardsManager.init();
 
 			ReplayReader replayReader;
 			try {
@@ -47,7 +49,7 @@ public class ReplayConverter {
 			for (ProtocolVersion protocolVersion : protocolVersions) {
 				int id = protocolVersion.getId();
 				if (id == 51 || id == 60 || id == 61 || id == 73 || id == 74 || id == 77 || id == 78) continue;
-				if (id > replayProtocol && ProtocolRegistry.getProtocolPath(id, replayProtocol) != null) {
+				if (id != replayProtocol && ProtocolRegistry.getProtocolPath(id, replayProtocol) != null) {
 					versions.add(protocolVersion.getName() + " - " + protocolVersion.getId());
 				}
 			}
