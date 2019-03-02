@@ -1,14 +1,14 @@
-package me.gerrygames.replayconverter.viaversion;
+package de.gerrygames.replayconverter.viaversion;
 
 public class CustomViaInjector implements us.myles.ViaVersion.api.platform.ViaInjector {
 	@Override
-	public void inject() throws Exception {}
+	public void inject() {}
 
 	@Override
-	public void uninject() throws Exception {}
+	public void uninject() {}
 
 	@Override
-	public int getServerProtocolVersion() throws Exception {
+	public int getServerProtocolVersion() {
 		return ViaVersionManager.serverProtocol;
 	}
 

@@ -1,13 +1,15 @@
-package me.gerrygames.replayconverter.viaversion;
+package de.gerrygames.replayconverter.viaversion;
 
+import com.google.gson.JsonObject;
 import us.myles.ViaVersion.api.ViaAPI;
 import us.myles.ViaVersion.api.ViaVersionConfig;
 import us.myles.ViaVersion.api.command.ViaCommandSender;
 import us.myles.ViaVersion.api.configuration.ConfigurationProvider;
 import us.myles.ViaVersion.api.platform.TaskId;
-import us.myles.viaversion.libs.gson.JsonObject;
 
+import java.util.Objects;
 import java.util.UUID;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class CustomViaPlatform implements us.myles.ViaVersion.api.platform.ViaPlatform {
@@ -15,7 +17,21 @@ public class CustomViaPlatform implements us.myles.ViaVersion.api.platform.ViaPl
 
 	@Override
 	public Logger getLogger() {
-		return null;
+		return new Logger("ViaVersion", null) {
+			public void log(LogRecord logRecord) {
+				String message = logRecord.getMessage();
+				Object[] parameters = logRecord.getParameters();
+				if (parameters != null) {
+					for (int i = 0; i < parameters.length; i++) {
+						message = message.replace("{" + i + "}", Objects.toString(parameters[i]));
+					}
+				}
+				System.out.println(message);
+				if (logRecord.getThrown() != null) {
+					logRecord.getThrown().printStackTrace();
+				}
+			}
+		};
 	}
 
 	@Override
@@ -40,6 +56,11 @@ public class CustomViaPlatform implements us.myles.ViaVersion.api.platform.ViaPl
 
 	@Override
 	public TaskId runSync(Runnable runnable) {
+		return null;
+	}
+
+	@Override
+	public TaskId runSync(Runnable runnable, Long aLong) {
 		return null;
 	}
 

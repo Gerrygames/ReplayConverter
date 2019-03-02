@@ -1,4 +1,4 @@
-package me.gerrygames.replayconverter.util;
+package de.gerrygames.replayconverter.util;
 
 import io.netty.buffer.ByteBuf;
 

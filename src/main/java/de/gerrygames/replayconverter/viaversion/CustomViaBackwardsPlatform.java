@@ -1,7 +1,8 @@
-package me.gerrygames.replayconverter.viaversion;
+package de.gerrygames.replayconverter.viaversion;
 
 import nl.matsv.viabackwards.ViaBackwards;
 import nl.matsv.viabackwards.api.ViaBackwardsPlatform;
+import us.myles.ViaVersion.api.Via;
 
 import java.util.logging.Logger;
 
@@ -13,12 +14,17 @@ public class CustomViaBackwardsPlatform implements ViaBackwardsPlatform {
 	}
 
 	@Override
-	public Logger getLogger() {return null;}
+	public Logger getLogger() {
+		return Via.getPlatform().getLogger();
+	}
 
 	@Override
-	public boolean isOutdated() {return false;}
+	public boolean isOutdated() {
+		return false;
+	}
 
 	@Override
-	public void disable() {}
+	public void disable() {
 
+	}
 }

@@ -1,7 +1,8 @@
-package me.gerrygames.replayconverter.viaversion;
+package de.gerrygames.replayconverter.viaversion;
 
 import us.myles.ViaVersion.api.ViaVersionConfig;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CustomViaConfig implements ViaVersionConfig {
@@ -146,8 +147,23 @@ public class CustomViaConfig implements ViaVersionConfig {
 	}
 
 	@Override
+	public boolean is1_12NBTArrayFix() {
+		return false;
+	}
+
+	@Override
+	public boolean is1_13TeamColourFix() {
+		return true;
+	}
+
+	@Override
+	public boolean is1_12QuickMoveActionFix() {
+		return false;
+	}
+
+	@Override
 	public List<Integer> getBlockedProtocols() {
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override
@@ -158,5 +174,50 @@ public class CustomViaConfig implements ViaVersionConfig {
 	@Override
 	public String getReloadDisconnectMsg() {
 		return null;
+	}
+
+	@Override
+	public boolean isSuppress1_13ConversionErrors() {
+		return false;
+	}
+
+	@Override
+	public boolean isDisable1_13AutoComplete() {
+		return false;
+	}
+
+	@Override
+	public boolean isMinimizeCooldown() {
+		return true;
+	}
+
+	@Override
+	public boolean isServersideBlockConnections() {
+		return false;
+	}
+
+	@Override
+	public String getBlockConnectionMethod() {
+		return null;
+	}
+
+	@Override
+	public boolean isReduceBlockStorageMemory() {
+		return false;
+	}
+
+	@Override
+	public boolean isStemWhenBlockAbove() {
+		return false;
+	}
+
+	@Override
+	public boolean isSnowCollisionFix() {
+		return false;
+	}
+
+	@Override
+	public int get1_13TabCompleteDelay() {
+		return 0;
 	}
 }

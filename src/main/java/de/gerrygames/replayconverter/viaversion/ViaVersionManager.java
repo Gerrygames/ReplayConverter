@@ -1,4 +1,4 @@
-package me.gerrygames.replayconverter.viaversion;
+package de.gerrygames.replayconverter.viaversion;
 
 import us.myles.ViaVersion.ViaManager;
 import us.myles.ViaVersion.api.Via;
@@ -9,11 +9,6 @@ public class ViaVersionManager {
 
 	public static void init() {
 		Via.init(ViaManager.builder().platform(new CustomViaPlatform()).injector(new CustomViaInjector()).build());
-		Via.getManager().getProviders().use(BulkChunkTranslatorProvider.class, new BulkChunkTranslatorProvider() {
-			@Override
-			public boolean isFiltered(Class<?> packet) {
-				return true;
-			}
-		});
+		Via.getManager().getProviders().use(BulkChunkTranslatorProvider.class, new BulkChunkTranslatorProvider());
 	}
 }

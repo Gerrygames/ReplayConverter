@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: ViaVersion.jar netty-all.jar guava.jar gson.jar
-Main-Class: me.gerrygames.replayconverter.main.ReplayConverter
-
